@@ -81,8 +81,8 @@ fn main() -> Result<()> {
         clap::Arg::new("config")
         .max_occurrences(1)
         .default_value("default")
-        .help("Config file to use. Might be specified as path, or a file name without '.ron' extension, \
-in this case it will be searched in './' and '<OS_CONFIGS_LOCATION>/mvtime'")];
+        .help("Path to the config file. Might be set as a path, or a file name without '.ron' extension, \
+in this case it will be searched for in the './' and '<OS_CONFIGS_LOCATION>/mvtime' directories")];
     let matches =
         clap::Command::new("mvtime").about("Multiverse CLI time tracker").args(args).get_matches();
 
@@ -93,9 +93,6 @@ in this case it will be searched in './' and '<OS_CONFIGS_LOCATION>/mvtime'")];
     // Load/Parse config file
     let tracks_cfg = config::load_config(config.clone())?;
 
-    // start config file change watcher
-    let (_watcher, change_event) = start_watcher(config.clone())?;
-
     let mut terminal = init(one_time)?;
     let mut app = App::new(tracks_cfg);
     terminal.size().map(|rect| app.update_layout(rect))?;
@@ -105,11 +102,14 @@ in this case it will be searched in './' and '<OS_CONFIGS_LOCATION>/mvtime'")];
         return finalize(terminal, true);
     }
 
+    // start config file change watcher
+    let (_watcher, change_event) = start_watcher(config.clone())?;
+
     'main: loop {
         // render
         app.render(&mut terminal)?;
 
-        // keyboard handling
+        // timer & keyboard handling
         let mut dt = TICK_RATE;
         while dt > 0 {
             let ts = SystemTime::now();
