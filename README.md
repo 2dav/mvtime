@@ -6,7 +6,7 @@ TUI multi timezone wall clock.
 ## Example configurations
 **Earth time**
 
-> cargo run timezone.ron 
+> cargo run timezones.ron 
 
 ![global timezones](img/tz.png)
 

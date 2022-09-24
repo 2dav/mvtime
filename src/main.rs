@@ -5,8 +5,11 @@ use crossterm::{
 };
 use eyre::{Result, WrapErr};
 use mvtime::{config, App};
+use notify::{RecommendedWatcher, RecursiveMode, Watcher};
 use std::{
     io::{self, Stdout},
+    path::PathBuf,
+    sync::mpsc::Receiver,
     time::{Duration, SystemTime},
 };
 use tui::{backend::CrosstermBackend, layout::Rect, Terminal};
@@ -40,6 +43,23 @@ fn init(one_time: bool) -> Result<Terminal<CrosstermBackend<Stdout>>> {
     Ok(terminal)
 }
 
+fn start_watcher(
+    path: PathBuf,
+) -> Result<(notify::INotifyWatcher, Receiver<Result<notify::Event, notify::Error>>)> {
+    let (tx, rx) = std::sync::mpsc::channel();
+    let mut watcher = RecommendedWatcher::new(tx, notify::Config::default())?;
+    watcher.watch(path.as_ref(), RecursiveMode::NonRecursive)?;
+    Ok((watcher, rx))
+}
+
+fn should_reload(rx: &Receiver<Result<notify::Event, notify::Error>>) -> bool {
+    if let Ok(e) = rx.try_recv() {
+        e.is_ok() && e.unwrap().kind.is_modify()
+    } else {
+        false
+    }
+}
+
 fn finalize(mut terminal: Terminal<CrosstermBackend<Stdout>>, one_time: bool) -> Result<()> {
     disable_raw_mode()?;
     if !one_time {
@@ -71,7 +91,10 @@ in this case it will be searched in './' and '<OS_CONFIGS_LOCATION>/mvtime'")];
         .wrap_err("Can't find a config file")?;
 
     // Load/Parse config file
-    let tracks_cfg = config::load_config(config)?;
+    let tracks_cfg = config::load_config(config.clone())?;
+
+    // start config file change watcher
+    let (_watcher, change_event) = start_watcher(config.clone())?;
 
     let mut terminal = init(one_time)?;
     let mut app = App::new(tracks_cfg);
@@ -83,8 +106,10 @@ in this case it will be searched in './' and '<OS_CONFIGS_LOCATION>/mvtime'")];
     }
 
     'main: loop {
+        // render
         app.render(&mut terminal)?;
 
+        // keyboard handling
         let mut dt = TICK_RATE;
         while dt > 0 {
             let ts = SystemTime::now();
@@ -94,6 +119,15 @@ in this case it will be searched in './' and '<OS_CONFIGS_LOCATION>/mvtime'")];
                 _ => {}
             }
             dt -= ts.elapsed().wrap_err("Time have gone backwards somehow")?.as_millis() as i64;
+        }
+
+        // config reloading
+        if should_reload(&change_event) {
+            // stay on the current config if the new one is invalid
+            if let Ok(cfg) = config::load_config(config.clone()) {
+                app = App::new(cfg);
+                terminal.size().map(|rect| app.update_layout(rect))?;
+            }
         }
     }
 
