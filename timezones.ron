@@ -1,0 +1,156 @@
+(tracks: [
+(
+	name: "Pacific Time(US)",
+	shortname: "PST",
+	offset: (-8, 0),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]
+),
+(
+	name: "Mountain Time(US)",
+	shortname: "MST",
+	offset: (-7, 0),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]
+),
+(
+	name: "Central Time(US)",
+	shortname: "CST",
+	offset: (-6, 0),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "Eastern Time(US)",
+	shortname: "EST",
+	offset: (-5, 0),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "Rio de Janeiro (BR)",
+	shortname: "BR",
+	offset: (-3, 0),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "London (UK)",
+	shortname: "UK",
+	offset: (0, 0),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "Berlin (GR)",
+	shortname: "GR",
+	offset: (1, 0),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "Moscow, Russia",
+	shortname:  "RU",
+	offset:     (3, 0),
+	show_badge: true,
+	time_label: (
+                    blink: true, 
+                    seconds: true, 
+                    fill: true, 
+                    use_range_color: true
+                ),
+	ranges:    [(start:(0, 0), end:(24, 0), color: Yellow)]
+),
+(
+	name: "Dubai (UAE)",
+	shortname: "AE",
+	offset: (4, 0),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "Mumbai (IN)",
+	shortname: "IN",
+	offset: (5, 30),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "Singapore (SG)",
+	shortname: "SG",
+	offset: (8, 00),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "Beijing (CH)",
+	shortname: "CH",
+	offset: (8, 00),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "Tokyo (JP)",
+	shortname: "CH",
+	offset: (9, 00),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "Sydney (AU)",
+	shortname: "AU",
+	offset: (11, 00),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ]),
+(
+	name: "New Zealand (NZ)",
+	shortname: "NZ",
+	offset: (13, 00),
+    time_label: (use_range_color: true),
+    ranges: [
+        (start:(6,0), end:(8,0), color:Yellow),
+        (start:(8,0), end:(18,0), color:White),
+        (start:(18,0), end:(21,45), color:Blue),
+    ])])
