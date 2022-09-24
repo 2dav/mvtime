@@ -6,7 +6,7 @@ TUI multi timezone wall clock.
 ## Example configurations
 **Earth time**
 
-> cargo run tz.ron 
+> cargo run timezone.ron 
 
 ![global timezones](img/tz.png)
 
@@ -17,7 +17,7 @@ so it is 7:59PM of yesterday(relative to local) in the US, meanwhile in Russia i
 and New Zealand is already passed this day for a half.
 
 **Global assets exchanges**
-> cargo run mkt.ron 
+> cargo run markets.ron 
 
 ![global markets](img/mkt.png)
 
