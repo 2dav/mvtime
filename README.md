@@ -2,7 +2,7 @@
 ## About
 Multi-timezone wall clock inspired by [everytimezone](https://everytimezone.com), for terminals.
 <p align="center">
-  <img alt="Example of mvtime configured for asset markets" src="img/mkt.png">
+  <img alt="Example of mvtime configured for asset markets" src="img/head.png">
 </p>
 
 ## Usage
