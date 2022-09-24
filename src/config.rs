@@ -237,7 +237,7 @@ pub fn load_config(path: PathBuf) -> Result<Config> {
 
 pub fn find_config(fname: &str) -> Result<PathBuf> {
     if fname.contains(".ron") {
-        Ok(fname.into())
+        PathBuf::from(fname).canonicalize().wrap_err("failed to locate config file")
     } else {
         // search for <name>.ron in ./, ~/<CONFIG_DIRS>/mvtime/
         let mut paths = vec![];
