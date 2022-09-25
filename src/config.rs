@@ -207,6 +207,12 @@ fn validate_tracks(mut config: Config) -> Result<Config> {
                 "Time is out of range\n{:#?}\nvalid value ranges for 'range.start' and 'range.end' is 0..24 for hour and 0..59 for minute",
                 track));
                 }
+                if start.0 * 100 + start.1 > 2400 {
+                    eyre::bail!(format!("Wrong 'start' time \n{:#?}", track));
+                }
+                if end.0 * 100 + end.1 > 2400 {
+                    eyre::bail!(format!("Wrong 'end' time \n{:#?}", track));
+                }
                 if start.0 * 100 + start.1 >= end.0 * 100 + end.1 {
                     eyre::bail!(format!("Wrong time ordering\n{:#?}\n'start' and 'end' time should be chronologically ordered such that 'start' << 'end'.", track));
                 }
