@@ -13,7 +13,7 @@ where `config` is the path to the [configuration](#configuration) file, and opti
     -h, --help    Print help information
     -l, --live    Run app in live mode
 
-see [examples](#examples) for some existing configurations
+see [examples](#examples) for some of the existing configurations
 
 ## Build
 > cargo build --release
@@ -71,7 +71,7 @@ Configuration file is the list of `time tracks` in the [RON](https://docs.rs/ron
 ```
 - **name** - track title
 - ***shortname** - alternative track title in compact mode
-- **offset** - UTC offset in 24-hour format `(HH,MM)`
+- **offset** - UTC offset in 24-hour format `(HH,MM) (-23..23, -59..59)`
 - ***show_badge** - whether to show 'badge' to the left of the title, `false` by default
 - ***time_label** - time label options
 	- ***blink** - controls blinking of `:`, `false` by default
@@ -85,8 +85,8 @@ ranges: [(start:(9, 30), end:(12, 00)),
         (start:(13, 00), end:(16, 00), color: Yellow, fill:true, blink:true)]
 ```
 - **ranges** - list of time ranges
-	- **start**  - start of the range in 24-hour format `(HH,MM)`
-	- **end** - end of the range
+	- **start**  - start of the range in 24-hour format `(HH,MM) (0..24, 0..59)`
+	- **end** - end of the range `(HH,MM) (0..24, 0..59)`
 	- ***color** - range [color](#colors)
 	- ***fill** - temporary overrides `time_label.fill` when range is active
 	- ***blink** - temporary overrides `time_label.blink` when range is active
