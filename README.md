@@ -58,7 +58,6 @@ Configuration file is the list of `time tracks` in the [RON](https://docs.rs/ron
 *Config file is reloaded automatically when changed.*
 
 ### Tracks
-
 ```
 (name: "",
  shortname:  "",
@@ -70,26 +69,27 @@ Configuration file is the list of `time tracks` in the [RON](https://docs.rs/ron
               use_range_color: bool),
  ranges:    [(start:(int, int), end:(int, int), color: Color, fill:bool, blink:bool)])
 ```
-- **name** - track title, optional
-- **shortname** - alternative track title in compact mode, optional
-- **offset** - UTC offset in 24-hour format (HH,MM)
-- **show_badge** - whether to show 'badge' to the left of the title
-- **time_label** - time label options
-	- **blink** - controls blinking of ':', `false` by default
-	- **seconds** - show seconds, `false` by default
-	- **fill** - use background color, `transparent` by default
-	- **use_range_color** - set active range [color](#colors) as a background
+- **name** - track title
+- ***shortname** - alternative track title in compact mode
+- **offset** - UTC offset in 24-hour format `(HH,MM)`
+- ***show_badge** - whether to show 'badge' to the left of the title, `false` by default
+- ***time_label** - time label options
+	- ***blink** - controls blinking of `:`, `false` by default
+	- ***seconds** - show seconds, `false` by default
+	- ***fill** - use background color, `transparent` by default
+	- ***use_range_color** - set active range [color](#colors) as a background, `false` by default
+
 ### Ranges
 ```
 ranges: [(start:(9, 30), end:(12, 00)),
         (start:(13, 00), end:(16, 00), color: Yellow, fill:true, blink:true)]
 ```
 - **ranges** - list of time ranges
-	- **start**  - start of the range in 24-hour format (HH,MM)
+	- **start**  - start of the range in 24-hour format `(HH,MM)`
 	- **end** - end of the range
-	- **color** - range [color](#colors)
-	- **fill** - temporary overrides `time_label.fill` when current range is active
-	- **blink** - temporary overrides `time_label.blink` when current range is active
+	- ***color** - range [color](#colors)
+	- ***fill** - temporary overrides `time_label.fill` when range is active
+	- ***blink** - temporary overrides `time_label.blink` when range is active
 
 ### Colors
 list of possible color values
