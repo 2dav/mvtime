@@ -20,7 +20,6 @@ see [examples](#examples) for some of the existing configurations
 
 move `target/release/mvtime` binary to any location on your `PATH`
 
-
 ## Examples
 [**EveryTimeZone**](timezones.ron) 
 
@@ -30,24 +29,24 @@ move `target/release/mvtime` binary to any location on your `PATH`
   <img alt="Example of mvtime configured to match everytimezone.com" src="img/tz.png">
 </p>
 
-This example colors different times of the day throughout the planet earth. 
+This example colors different times of the day in common timezones on the planet Earth. 
 
 `Moscow/Russia` row in the middle is configured to be the 'local time' upon which other bars are positioned,\
 so it is 7:59PM of yesterday(relative to local) in the US, meanwhile in Russia it is 4:59AM of today,
 and New Zealand is already passed this day for a half.
 
-[**Global assets exchanges**](markets.ron)
+[**Asset exchanges**](markets.ron)
 > mvtime -l markets.ron 
 
 <p align="center">
   <img alt="Example of mvtime configured for asset markets" src="img/mkt.png">
 </p>
 
-Asset exchanges works in the different regimes throughout the day, these are common for all exchanges but differs in duration and continuity, this
-example uses colors to code these:
-- white regions denotes 'morning trading session', specific period at the start of the day
-- yellow regions are 'main trading session'
-- and blue regions are 'evening trading session'
+The asset exchanges operates in the different regimes during the day, they are common to all exchanges,
+but vary in duration and continuity, this example uses colors to encode these features:
+- white areas denote 'morning trading session', the specific period at the beginning of the day
+- yellow areas - 'main trading session'
+- and the blue areas are 'evening trading session'
 
 ## Configuration
 
@@ -114,5 +113,5 @@ White,
 Rgb(u8, u8, u8)
 ```
 
-*If you found some interesting usage, do miss some features, or just want to share your configuration,
+*If you found some interesting usage, do miss some features, or just wants to share your configuration,
 feel free to fill the issue.*
